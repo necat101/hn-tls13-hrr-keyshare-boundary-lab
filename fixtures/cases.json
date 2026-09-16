@@ -1,0 +1,78 @@
+[
+  {
+    "id": "common-matching-share-no-hrr",
+    "title": "Common group with matching initial key_share — no HRR needed",
+    "client_supported_groups": ["x25519", "p256"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-001"}],
+    "server_supported_groups": ["x25519", "p256"],
+    "server_selected_group": "x25519"
+  },
+  {
+    "id": "common-group-no-share-hrr",
+    "title": "Mutually supported selected group but no compatible initial key_share — HRR",
+    "client_supported_groups": ["x25519", "p256"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-002"}],
+    "server_supported_groups": ["x25519", "p256"],
+    "server_selected_group": "p256"
+  },
+  {
+    "id": "no-common-abort",
+    "title": "No common supported group — abort, not HRR",
+    "client_supported_groups": ["x25519"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-003"}],
+    "server_supported_groups": ["p384"],
+    "server_selected_group": null
+  },
+  {
+    "id": "hrr-invalid-absent-group",
+    "title": "HRR selecting a group absent from original supported_groups — invalid",
+    "client_supported_groups": ["x25519", "p256"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-004"}],
+    "server_supported_groups": ["x25519", "p256", "p384"],
+    "server_hrr_selected_group": "p384"
+  },
+  {
+    "id": "hrr-invalid-already-offered",
+    "title": "HRR selecting a group already present in original key_share — invalid",
+    "client_supported_groups": ["x25519", "p256"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-005"}, {"group": "p256", "key_share_value": "fresh-p256-005"}],
+    "server_supported_groups": ["x25519", "p256"],
+    "server_hrr_selected_group": "x25519"
+  },
+  {
+    "id": "prefers-pq-accepts-classical",
+    "title": "Server prefers PQ but accepts an offered classical key_share — preference is not a mandatory retry",
+    "client_supported_groups": ["x25519", "x25519mlkem768"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-006"}],
+    "server_supported_groups": ["x25519", "x25519mlkem768"],
+    "server_selected_group": "x25519"
+  },
+  {
+    "id": "remembered-preference-fresh-share",
+    "title": "Remembering a previously learned group preference without reusing KeyShare bytes",
+    "client_supported_groups": ["x25519mlkem768", "x25519"],
+    "client_key_shares": [{"group": "x25519mlkem768", "key_share_value": "fresh-pq-007"}],
+    "server_supported_groups": ["x25519mlkem768", "x25519"],
+    "server_selected_group": "x25519mlkem768",
+    "remembered_group_preference": "x25519mlkem768",
+    "reuse_same_key_share_bytes": false
+  },
+  {
+    "id": "reuse-keyshare-forbidden",
+    "title": "Reusing the same KeyShare value across connections — forbidden by RFC 9846",
+    "client_supported_groups": ["x25519"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "reused-bytes-008-same-as-prior-conn"}],
+    "server_supported_groups": ["x25519"],
+    "server_selected_group": "x25519",
+    "reuse_same_key_share_bytes": true
+  },
+  {
+    "id": "rfc10024-standardized-not-mandatory",
+    "title": "X25519MLKEM768 as a standardized RFC 10024 group without treating it as a universal mandatory first offer",
+    "client_supported_groups": ["x25519mlkem768", "x25519", "p256"],
+    "client_key_shares": [{"group": "x25519", "key_share_value": "fresh-x25519-009"}],
+    "server_supported_groups": ["x25519", "p256"],
+    "server_selected_group": "x25519",
+    "claims_mandatory_first_offer": "x25519mlkem768"
+  }
+]
