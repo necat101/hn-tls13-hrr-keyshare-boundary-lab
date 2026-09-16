@@ -125,8 +125,8 @@
     ],
     "outcome": "no_hrr_needed",
     "detail": "Common group x25519 has matching initial key_share → no HRR needed; preference ≠ mandatory retry.",
-    "title": "Server prefers PQ but accepts an offered classical key_share — preference is not a mandatory retry",
-    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate."
+    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate.",
+    "title": "Server prefers PQ but accepts an offered classical key_share — preference is not a mandatory retry"
   },
   {
     "case_id": "remembered-preference-fresh-share",
@@ -147,10 +147,11 @@
     ],
     "outcome": "no_hrr_needed",
     "detail": "Common group x25519mlkem768 has matching initial key_share → no HRR needed; preference ≠ mandatory retry. Caching/remembering a group preference without reusing KeyShare bytes is permitted.",
-    "title": "Remembering a previously learned group preference without reusing KeyShare bytes",
+    "rfc10024_note": "RFC 10024 defines this as a standardized group; not a mandatory first key_share for all clients.",
     "key_share_reuse": "compliant_new_keyshare",
     "remembered_preference": "x25519mlkem768",
-    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate."
+    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate.",
+    "title": "Remembering a previously learned group preference without reusing KeyShare bytes"
   },
   {
     "case_id": "reuse-keyshare-forbidden",
@@ -168,8 +169,8 @@
     ],
     "outcome": "no_hrr_needed",
     "detail": "Common group x25519 has matching initial key_share → no HRR needed; preference ≠ mandatory retry. Reusing same KeyShare bytes across connections is forbidden by RFC 9846 §1.2 (distinct from caching a group preference).",
-    "title": "Reusing the same KeyShare value across connections — forbidden by RFC 9846",
-    "key_share_reuse": "forbidden_by_rfc9846"
+    "key_share_reuse": "forbidden_by_rfc9846",
+    "title": "Reusing the same KeyShare value across connections — forbidden by RFC 9846"
   },
   {
     "case_id": "rfc10024-standardized-not-mandatory",
@@ -191,8 +192,8 @@
     ],
     "outcome": "no_hrr_needed",
     "detail": "Common group x25519 has matching initial key_share → no HRR needed; preference ≠ mandatory retry. RFC 10024 standardizes X25519MLKEM768 (Recommended Y, 0x11EC) but does not make it a mandatory first key_share for all TLS 1.3 clients.",
-    "title": "X25519MLKEM768 as a standardized RFC 10024 group without treating it as a universal mandatory first offer",
     "claims_mandatory_first_offer": "x25519mlkem768",
-    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate."
+    "rfc10024_registry": "RFC 10024 defines PQ/T hybrid groups (X25519MLKEM768 etc.) as standardized registry entries; deployment/negotiation policy is separate.",
+    "title": "X25519MLKEM768 as a standardized RFC 10024 group without treating it as a universal mandatory first offer"
   }
 ]
