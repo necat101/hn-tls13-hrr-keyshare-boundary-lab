@@ -79,7 +79,7 @@ def main():
     cases=json.loads(FIXTURES.read_text()); results=[]
     for c in cases:
         r=evaluate_case(c); r["title"]=c.get("title",""); results.append(r)
-    RESULTS_JSON.write_text(json.dumps(results,indent=2)+"\n")
+    RESULTS_JSON.write_text(json.dumps(results,indent=2, ensure_ascii=False)+"\n")
     lines=["# RESULTS — hn-tls13-hrr-keyshare-boundary-lab",""]
     lines.append("Evaluator derives outcomes from synthetic inputs per **RFC 9846** (current TLS 1.3, obsoletes 8446) and **RFC 10024** group definitions. No live TLS.")
     lines.append(""); lines.append("| case | outcome | hrr_valid | reuse | detail |"); lines.append("|---|---|---|---|---|")
